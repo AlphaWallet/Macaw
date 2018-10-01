@@ -16,6 +16,10 @@ public class RenderUtils {
         return p
     }
 
+    public class func createNodeRenderer(_ node: Node) -> NodeRenderer {
+        return createNodeRenderer(node, view: nil)
+    }
+
     class func createNodeRenderer(_ node: Node, view: DrawingView?, parentRenderer: GroupRenderer? = nil) -> NodeRenderer {
         if let group = node as? Group {
             return GroupRenderer(group: group, view: view, parentRenderer: parentRenderer)
