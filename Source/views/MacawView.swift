@@ -673,11 +673,14 @@ internal class DrawingView: MView {
     }
 }
 
-class LayoutHelper {
+public class LayoutHelper {
 
     private var prevSize: Size?
     private var prevRect: Rect?
     private var prevTransform: Transform?
+
+    public init() {
+    }
 
     public func getTransform(_ nodeRenderer: NodeRenderer, _ layout: ContentLayout, _ size: Size) -> Transform {
         setSize(size: size)
