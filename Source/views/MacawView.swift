@@ -272,13 +272,16 @@ internal class DrawingView: MView, MGestureRecognizerDelegate {
     var toRender = true
     var frameSetFirstTime = false
 
-    func initializeView() {
-        self.contentLayout = .none
-        self.context = RenderContext(view: self)
-    }
+    #if os(OSX)
+    open override var layer: CALayer? {
+        didSet {
+        guard self.layer != nil else {
+        return
+        }
+        initializeView()
 
-    @objc public convenience required init?(coder aDecoder: NSCoder) {
-        self.init(node: Group(), coder: aDecoder)
+        self.renderer = RenderUtils.createNodeRenderer(node, view: self)
+        }
     }
 
     @objc public init?(node: Node, coder aDecoder: NSCoder) {
