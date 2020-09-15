@@ -30,6 +30,7 @@ public class NodePath {
     }
 }
 
+
 public struct TouchPoint {
     public let id: Int
     @available(*, deprecated) public var location: Point // absolute location
